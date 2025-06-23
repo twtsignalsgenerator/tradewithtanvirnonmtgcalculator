@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>TWT NON-MTG CALCULATOR</title>
-  <link rel="icon" type="image/png" href="logo.png"> <!-- ✅ Logo added -->
+  <link rel="icon" type="image/png" href="logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -12,123 +12,150 @@
       background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
       display: flex;
       justify-content: center;
-      padding: 30px 15px;
+      padding: 20px 10px;
       min-height: 100vh;
       margin: 0;
       user-select: none;
     }
+
     .calculator {
       background: white;
-      padding: 30px 35px;
-      max-width: 600px;
+      padding: 20px 20px;
+      max-width: 480px;
       width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
       transition: box-shadow 0.3s ease;
-      position: relative;
     }
+
     .calculator:hover {
-      box-shadow: 0 25px 40px rgba(0,0,0,0.25);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     }
+
     h2 {
       text-align: center;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       font-weight: 700;
       color: #222;
-      font-size: 1.9rem;
+      font-size: 1.6rem;
     }
+
     label {
       display: block;
-      margin-top: 20px;
+      margin-top: 15px;
       font-weight: 600;
       color: #333;
-      font-size: 1rem;
+      font-size: 0.95rem;
       position: relative;
-      padding-left: 30px;
+      padding-left: 25px;
     }
+
     label[data-icon]:before {
       content: attr(data-icon);
       position: absolute;
-      left: 5px;
+      left: 0;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: #007bff;
     }
+
     input[type="number"] {
+      display: block;
       width: 100%;
-      padding: 12px 15px;
-      border-radius: 12px;
-      border: 1.8px solid #ccc;
-      margin-top: 6px;
-      font-size: 1rem;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      font-weight: 400;
+      padding: 10px 14px;
+      margin-top: 5px;
+      font-size: 0.95rem;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
+
     input[type="number"]:focus {
-      outline: none;
       border-color: #007bff;
-      box-shadow: 0 0 6px #007bffaa;
+      box-shadow: 0 0 5px #007bff88;
+      outline: none;
     }
+
     input.invalid {
       border-color: #e74c3c;
-      box-shadow: 0 0 6px #e74c3caa;
+      box-shadow: 0 0 5px #e74c3c88;
     }
-    button {
-      margin-top: 25px;
-      padding: 15px;
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .button-group button {
+      flex: 1;
+      padding: 12px 0;
       background: #007bff;
       color: white;
       border: none;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 1.15rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
       cursor: pointer;
       transition: background 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0,123,255,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,123,255,0.3);
     }
-    button:disabled {
+
+    .button-group button:disabled {
       background: #6c757d;
       cursor: not-allowed;
       box-shadow: none;
     }
-    button:hover:not(:disabled) {
+
+    .button-group button:hover:not(:disabled) {
       background: #0056b3;
-      box-shadow: 0 8px 20px rgba(0,86,179,0.7);
     }
+
+    .info-text {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-align: center;
+    }
+
     table {
       width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      margin-top: 30px;
-      font-size: 0.95rem;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      border-radius: 15px;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 0.85rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border-radius: 10px;
       overflow: hidden;
     }
+
     thead tr {
       background: linear-gradient(90deg, #007bff, #0056b3);
       color: white;
-      font-weight: 600;
     }
+
     th, td {
-      padding: 14px 12px;
+      padding: 10px 8px;
       border-bottom: 1px solid #eee;
       text-align: center;
     }
+
     tbody tr:nth-child(even) {
       background: #f7f9fc;
     }
+
     tbody tr:hover {
       background: #dbe9ff;
-      transition: background 0.3s ease;
     }
-    @media (max-width: 600px) {
+
+    @media (max-width: 480px) {
       .calculator {
-        padding: 25px 20px;
+        padding: 15px 15px;
+      }
+      input[type="number"] {
+        padding: 9px 12px;
+        font-size: 0.9rem;
       }
       table {
         display: block;
@@ -136,25 +163,17 @@
         white-space: nowrap;
       }
       th, td {
-        min-width: 90px;
+        min-width: 80px;
       }
     }
-    .button-group {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    .button-group button {
-      flex: 1;
-      padding: 12px 0;
-      font-weight: 600;
-    }
+
     footer {
       text-align: center;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: #555;
-      margin-top: 25px;
+      margin-top: 20px;
     }
+
     footer a {
       color: #007bff;
       text-decoration: none;
@@ -162,28 +181,27 @@
     }
   </style>
 </head>
-
 <body oncontextmenu="return false">
   <div class="calculator">
     <h2>📊TWT NON-MTG CALCULATOR</h2>
 
-    <label for="profitTarget" data-icon="🎯">Enter Profit Target ($)</label>
+    <label for="profitTarget" data-icon="🎯">Profit Target ($)</label>
     <input type="number" id="profitTarget" placeholder="e.g. 50" min="0" step="0.01" />
 
-    <label for="tradeAmount" data-icon="💵">Enter Trade Amount ($)</label>
+    <label for="tradeAmount" data-icon="💵">Trade Amount ($)</label>
     <input type="number" id="tradeAmount" placeholder="e.g. 5" min="0" step="0.01" />
 
-    <label for="brokerPercent" data-icon="📈">Broker % Percentage</label>
-    <input type="number" id="brokerPercent" placeholder="e.g. 80" min="0" max="100" step="0.1" value="80" style="margin-top:8px;" />
+    <label for="brokerPercent" data-icon="📈">Broker %</label>
+    <input type="number" id="brokerPercent" placeholder="e.g. 80" min="0" max="100" step="0.1" value="80" />
 
     <div class="button-group">
-      <button id="calculateBtn" onclick="calculateNonMtgList()">Get NonMtg List</button>
-      <button id="clearBtn" onclick="clearInputs()">Clear</button>
+      <button id="calculateBtn" onclick="calculateNonMtgList()">Get List</button>
+      <button onclick="clearInputs()">Clear</button>
     </div>
 
     <div class="info-text" id="tradeSummary"></div>
 
-    <table aria-label="Trade calculation results">
+    <table aria-label="Results">
       <thead>
         <tr>
           <th>Trade</th>
@@ -196,83 +214,56 @@
     </table>
 
     <footer>
-      © 2025 | Developed by Trade With Tanvir | Source code is protected.<br>
-     📊TWT NON MTG CALCULATOR | <a href="https://t.me/+anIfNjougNQ3YWFl" target="_blank">Join Our Telegram</a>
+      © 2025 | Trade With Tanvir | Source protected.<br>
+      📊TWT NON MTG CALCULATOR | <a href="https://t.me/+anIfNjougNQ3YWFl" target="_blank">Join Telegram</a>
     </footer>
   </div>
 
   <script>
     document.onkeydown = function(e) {
-      if (
-        e.key === "F12" || 
-        (e.ctrlKey && e.shiftKey && e.key === "I") || 
-        (e.ctrlKey && e.key === "U") || 
-        (e.ctrlKey && e.key === "C") || 
-        (e.ctrlKey && e.key === "A")
-      ) {
+      if (["F12"].includes(e.key) || 
+          (e.ctrlKey && e.shiftKey && e.key === "I") || 
+          (e.ctrlKey && ["U", "C", "A"].includes(e.key))) {
         return false;
       }
     };
-    document.addEventListener('copy', function(e) {
-      e.preventDefault();
-    });
-
+    document.addEventListener('copy', e => e.preventDefault());
     function clearInputs() {
-      document.getElementById('profitTarget').value = '';
-      document.getElementById('tradeAmount').value = '';
-      document.getElementById('brokerPercent').value = '80';
+      ['profitTarget','tradeAmount','brokerPercent'].forEach(id => document.getElementById(id).value = id==='brokerPercent'?'80':'');
       document.getElementById('resultTableBody').innerHTML = '';
       document.getElementById('tradeSummary').innerText = '';
       removeInvalidStyles();
       document.getElementById('calculateBtn').disabled = false;
     }
-
     function removeInvalidStyles() {
       ['profitTarget', 'tradeAmount', 'brokerPercent'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.classList.remove('invalid');
+        document.getElementById(id).classList.remove('invalid');
       });
     }
-
     function calculateNonMtgList() {
       removeInvalidStyles();
       const p = parseFloat(document.getElementById('profitTarget').value),
             t = parseFloat(document.getElementById('tradeAmount').value),
             b = parseFloat(document.getElementById('brokerPercent').value);
-      let v = true;
-      if (isNaN(p) || p <= 0) {
-        document.getElementById('profitTarget').classList.add('invalid'); v = false;
-      }
-      if (isNaN(t) || t <= 0) {
-        document.getElementById('tradeAmount').classList.add('invalid'); v = false;
-      }
-      if (isNaN(b) || b <= 0 || b > 100) {
-        document.getElementById('brokerPercent').classList.add('invalid'); v = false;
-      }
-      if (!v) {
-        alert('❌ Please fill in all fields with valid positive numbers.');
-        return;
-      }
-
+      let valid = true;
+      if (isNaN(p) || p <= 0) {document.getElementById('profitTarget').classList.add('invalid'); valid = false;}
+      if (isNaN(t) || t <= 0) {document.getElementById('tradeAmount').classList.add('invalid'); valid = false;}
+      if (isNaN(b) || b <= 0 || b > 100) {document.getElementById('brokerPercent').classList.add('invalid'); valid = false;}
+      if (!valid) { alert('❌ Please fill in valid positive numbers.'); return; }
       const btn = document.getElementById('calculateBtn');
       btn.disabled = true;
       const resultTable = document.getElementById('resultTableBody');
       resultTable.innerHTML = '';
       let totalProfit = 0, tradeCount = 0, maxTrades = 1000;
-
       while (totalProfit < p && tradeCount < maxTrades) {
         tradeCount++;
-        const profit = t * (b / 100);
+        const profit = t * (b/100);
         totalProfit += profit;
         resultTable.innerHTML += `<tr><td>${tradeCount}</td><td>$${t.toFixed(2)}</td><td>$${profit.toFixed(2)}</td><td>$${totalProfit.toFixed(2)}</td></tr>`;
       }
-
-      if (tradeCount >= maxTrades) {
-        alert('⚠️ Reached maximum trade iterations. Please adjust your inputs.');
-      }
-
+      if (tradeCount >= maxTrades) alert('⚠️ Reached maximum trade limit.');
       const invested = t * tradeCount;
-      document.getElementById('tradeSummary').innerText = `Total Trades: ${tradeCount} | Total Invested: $${invested.toFixed(2)} | Total Profit: $${totalProfit.toFixed(2)}`;
+      document.getElementById('tradeSummary').innerText = `Trades: ${tradeCount} | Invested: $${invested.toFixed(2)} | Profit: $${totalProfit.toFixed(2)}`;
     }
   </script>
 </body>
