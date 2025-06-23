@@ -1,0 +1,21 @@
+{
+  "name": "TWT NON-MTG CALCULATOR",
+  "short_name": "TWT Calculator",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#74ebd5",
+  "theme_color": "#007bff",
+  "description": "Trade With Tanvir NON-MTG Calculator App",
+  "icons": [
+    {
+      "src": "logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
